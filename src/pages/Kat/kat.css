@@ -1,0 +1,4 @@
+.kat-content {
+    height: 50%;
+    transition: height 1s ease
+}

@@ -18,16 +18,16 @@ const Sam = () => {
 
     const containerVariants = {
         hidden: {
-            y: `100vh`,
+            x: `-100vw`,
             opacity: 0
         },
         visible: {
-            y: 0,
+            x: 0,
             opacity: 1,
             transition: { duration: 0.5}
         },
         exit: {
-            y: `100vh`,
+            x: `-100vw`,
             opacity: 0,
             transition: { ease: `easeIn` }
         },
@@ -38,9 +38,6 @@ const Sam = () => {
 
     return (
         <motion.div variants = {containerVariants} initial="hidden" animate = "visible" exit = "exit" className={containerClass}>
-            <div className={`h-1/2 transition-opacity flex w-full bg-gray-500`}>
-            </div>
-
             <div className={`p-8 bg-gray-800 space-y-12`}>
                 <h1 className="text-6xl text-gray-200 text-center">
                     Samuel Britt

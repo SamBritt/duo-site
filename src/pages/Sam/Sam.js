@@ -8,9 +8,7 @@ const Sam = () => {
 
     const getClasses = () => {
         let arr = [
-            `h-screen`,
-            `border-r-2`,
-            `border-gray-600`,
+            `h-screen`
         ]
 
         return arr.join(` `)
@@ -18,7 +16,7 @@ const Sam = () => {
 
     const containerVariants = {
         hidden: {
-            x: `-100vw`,
+            x: -20,
             opacity: 0
         },
         visible: {
@@ -27,7 +25,7 @@ const Sam = () => {
             transition: { duration: 0.5}
         },
         exit: {
-            x: `-100vw`,
+            x: -20,
             opacity: 0,
             transition: { ease: `easeIn` }
         },

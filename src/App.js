@@ -1,6 +1,6 @@
 import './App.css';
-import { useState } from 'react'
-import { Routes, Route, Link, useLocation } from "react-router-dom";
+import { useEffect, useState } from 'react'
+import { Routes, Route, Link, useLocation, useParams } from "react-router-dom";
 import {
   Home,
   Us,
@@ -11,25 +11,45 @@ import {motion, AnimatePresence} from 'framer-motion';
 
 function App() {
   const location = useLocation() 
+  let currentPath = location.pathname.substr(1, location.pathname.length)
 
+  const [current, setCurrent] = useState(``)
+
+  useEffect(() => {
+    return () => {
+      console.log(currentPath)
+    }
+  })
+
+  const isCurrent = name => currentPath === name
+
+  
   return (
-    <div className="main bg-gray-900 overflow-y-scroll">
+    <div className={`main overflow-y-scroll ${isCurrent(`kat`) ? `transition-all duration-300 ease-in-out bg-gray-400`: `transition-all duration-300 ease-in-out bg-gray-800`}`}>
       <nav>
-        <ul className="flex flex-row w-full justify-evenly">
-          <li>
+        <ul className="flex flex-row w-full justify-evenly py-4">
+          <li className={`${isCurrent(`kat`) ? `text-gray-800` : `text-gray-200` }`}>
             <Link to="/">Main</Link>
           </li>
-          <li>
+
+          <li className={`${isCurrent(`kat`) ? `text-gray-800` : `text-gray-200` }`}>
             <Link to="/us">Us</Link>
           </li>
-          <li>
-            <Link to="/kat">Kat</Link>
+
+          <li className={`${isCurrent(`kat`) ? `text-gray-800` : `text-gray-200` }`}>
+            <Link 
+              to="/kat"
+              onClick={() => setCurrent(`kat`)}>Kat</Link>
           </li>
-          <li>
-            <Link to="/sam">Sam</Link>
+
+          <li className={`${isCurrent(`kat`) ? `text-gray-800` : `text-gray-200` }`}>
+            <Link 
+              to="/sam"
+              onClick={() => setCurrent(`Sam`)}>Sam</Link>
           </li>
         </ul>
       </nav>
+
       <AnimatePresence>
         <Routes location={location} key={location.key}>
           <Route path="/" element={<Home />} />

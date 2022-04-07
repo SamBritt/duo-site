@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import {motion} from 'framer-motion'
 import InfoCard from '../../components/InfoCard'
+import Shop from '../../components/shop/Shop'
 
-const Kat = () => {
+const Kat = ({items, isLoading}) => {
+
 
     const getClasses = () => {
         let arr = [
@@ -13,16 +15,16 @@ const Kat = () => {
     }
     const containerVariants = {
         hidden: {
-            x: 20,
+            y: 20,
             opacity: 0
         },
         visible: {
-            x: 0,
+            y: 0,
             opacity: 1,
             transition: { duration: 0.5}
         },
         exit: {
-            x: 20,
+            y: -20,
             opacity: 0,
             transition: { ease: `easeIn` }
         },
@@ -38,20 +40,27 @@ const Kat = () => {
             exit="exit"
             className={containerClass}>
             <div className={`h-full flex flex-row space-x-8 p-8`}>
-                <section className="flex-1 bg-gray-500 rounded-xl">
-
-                </section>
                 <section className="flex-1 space-y-12">
-                    <h1 className="text-6xl text-gray-800 text-center">
+                    <section className="flex w-full h-1/2 bg-gray-500 rounded-xl" style = {{ background: items ? `url('${items[2]?.download_url}') center center no-repeat` : `inherit` }}>
+
+                    </section>
+                    <h1 className="text-8xl text-gray-800 text-center">
                         Katherine Knowles
                     </h1>
-
-                    <InfoCard/>
-                    <InfoCard/>
+                    <section className="flex flex-row space-x-6">
+                        <InfoCard
+                            heading = {`Journey to a Better Future`}
+                            subtext = {`And how to get there.`}
+                            text={`Proident nulla ullamco pariatur enim nulla laboris. Sit elit duis irure aliqua est fugiat reprehenderit pariatur laboris ea. Voluptate elit in nostrud labore duis ea id magna ea adipisicing anim.`}/>
+                        <InfoCard
+                            heading = {`Career in Sustainability`}
+                            subtext = {`Text about career in sustainability`}
+                            text={`Proident nulla ullamco pariatur enim nulla laboris. Sit elit duis irure aliqua est fugiat reprehenderit pariatur laboris ea. Voluptate elit in nostrud labore duis ea id magna ea adipisicing anim.`}/>
+                    </section>
+                <section>
+                    <Shop items={items} isLoading={isLoading}/>
                 </section>
-            </div>
-            <div className="w-full h-full p-8">
-                <InfoCard/>
+                </section>
             </div>
         </motion.div>
     )

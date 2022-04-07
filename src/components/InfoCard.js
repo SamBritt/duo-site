@@ -1,34 +1,14 @@
-import { motion } from 'framer-motion'
+import CardContainer from './CardContainer'
 
-const InfoCard = () => {
-    const variants = {
-        hidden: {
-            y: -20,
-            opacity: 0
-        },
-        visible: {
-            y: 0,
-            opacity: 1,
-            transition: { delay: 0.75, duration: 0.5 }
-        },
-        exit: {
-            y: -20,
-            opacity: 0,
-            transition: { ease: `easeIn` }
-        },
-    }
+const InfoCard = ({heading, text, subtext, outline = false, invertText = false}) => {
 
     return (
-        <motion.div
-            variants = {variants}
-            initial="hidden"
-            animate = "visible"
-            exit = "exit"
-            className="justify-start shadow-2xl bg-gray-300 border-2 border-gray-300 rounded-xl p-6 px-10">
-            <h1 className="text-3xl text-gray-800 pb-2">Content</h1>
-            <p className = "text-gray-700 pb-2">Proident nulla ullamco pariatur enim nulla laboris. Sit elit duis irure aliqua est fugiat reprehenderit pariatur laboris ea. Voluptate elit in nostrud labore duis ea id magna ea adipisicing anim.</p>
-            <p className = "text-gray-700">Proident nulla ullamco pariatur enim nulla laboris. Sit elit duis irure aliqua est fugiat reprehenderit pariatur laboris ea. Voluptate elit in nostrud labore duis ea id magna ea adipisicing anim.</p>
-        </motion.div>
+        <CardContainer outline={outline}>
+            <h1 className={`${invertText ? `text-gray-200` : `text-gray-800`} text-3xl`}>{ heading }</h1>
+            <p className = {`${invertText ? `text-blue-300` : `text-blue-600`} text-sm pb-2`}>{ subtext }</p>
+            <p className = {`${invertText ? `text-gray-300` : `text-gray-700`} pb-2`}>{ text }</p>
+            <p className = {`${invertText ? `text-gray-300` : `text-gray-700`}`}>{ text }</p>
+        </CardContainer>
     )
 }
 

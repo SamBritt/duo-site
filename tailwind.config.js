@@ -10,8 +10,9 @@ module.exports = {
       black: colors.black,
       blue: colors.sky,
       white: colors.white,
-      green: colors.lime,
+      green: colors.green,
       gray: colors.warmGray,
+      sky: colors.sky,
       indigo: colors.indigo,
       red: colors.rose,
       yellow: colors.amber,
@@ -21,6 +22,11 @@ module.exports = {
         'montserrat': ['Montserrat'],
         'lato': ['Lato'],
         'garamond': ['Garamond']
+      },
+      transitionProperty: {
+        'height': 'height',
+        'width': 'width',
+        'spacing': 'margin, padding',
       }
     },
   },
